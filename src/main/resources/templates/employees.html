@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container">
+<h3>Employee Details</h3>
+	<table class="table table-bordered table-striped">
+
+		<thead class="thead-dark">
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>ADDRESS</th>
+				<th>EMAIL</th>
+				<th>UPDATE</th>
+				<th>DELETE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="emoloyee : ${employees}">
+				<td th:text="${emoloyee.id}" />
+				<td th:text="${emoloyee.name}" />
+				<td th:text="${emoloyee.address}" />
+				<td th:text="${emoloyee.email}" />
+				<td><a th:href="@{updateEmployee(employeeid=${emoloyee.id})}">
+						update</a></td>
+				<td><a th:href="@{delete(employeeid=${emoloyee.id})}"
+					onclick="if(!(confirm('are you sure you want to delete field'))) return false">
+						delete</a></td>
+			</tr>			
+		</tbody>		
+	</table>
+	<h1><a th:href="@{/insert}">REGISTER EMPLOYEE</a></h1>
+	</div>
+</body>
+</html>
